@@ -157,7 +157,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	var requestBody struct {
 		Link        string `json:"link"`
 		Description string `json:"description"`
-		ProjectID   int    `json:"project_id"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {
@@ -176,7 +175,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 	repo := repository.NewRepository(db)
 
-	if err := repo.Update(id, requestBody.Link, requestBody.Description, requestBody.ProjectID); err != nil {
+	if err := repo.Update(id, requestBody.Link, requestBody.Description); err != nil {
 		http.Error(w, "Error updating", http.StatusInternalServerError)
 		log.Println("Update Error:", err)
 		return

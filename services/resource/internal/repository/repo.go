@@ -51,9 +51,9 @@ func (ir *Repository) Create(newResource *internal.Resource) error {
 	return err
 }
 
-func (ir *Repository) Update(id int, link string, description string, projectID int) error {
-	query := "UPDATE resource SET link = $1, description = $2, project_id = $3 WHERE id = $4"
-	_, err := ir.DB.Connection.Exec(query, link, description, projectID, id)
+func (ir *Repository) Update(id int, link string, description string) error {
+	query := "UPDATE resource SET link = $1, description = $2 WHERE id = $3"
+	_, err := ir.DB.Connection.Exec(query, link, description, id)
 	return err
 }
 
