@@ -39,7 +39,8 @@ func (ir *Repository) Get(id int) (*internal.Client, error) {
 	row := ir.DB.Connection.QueryRow(query, id)
 
 	var client internal.Client
-	if err := row.Scan(&client.ID, &client.Name); err != nil {
+	if err := row.Scan(&client.ID, &client.Name, &client.TinOrKpp, &client.Address,
+		&client.BIK, &client.CheckingAccount, &client.CorrespondentAccount); err != nil {
 		return nil, err
 	}
 
