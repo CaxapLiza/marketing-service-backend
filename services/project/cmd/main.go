@@ -25,5 +25,5 @@ func main() {
 	router.HandleFunc("/projects/{id}", handler.Update).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/projects/{id}", handler.Delete).Methods("DELETE", "OPTIONS")
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8084", router))
 }

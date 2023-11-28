@@ -1,11 +1,39 @@
-import instance from "./funcs.js";
+import axios from "axios";
 
-export const getList = () => instance.get("clients");
+const baseURL = "http://localhost:8081/";
+const instance = axios.create({
+  baseURL: baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-export const get = (id) => instance.get(`clients/${id}`);
+export const getList = (requestConfig = {}) => {
+  return instance.get(`${baseURL}clients`, {
+    ...requestConfig,
+  })
+}
 
-export const create = (data) => instance.post("clients", data);
+export const get = (id, requestConfig = {}) => {
+  return instance.get(`${baseURL}clients/${id}`, {
+    ...requestConfig,
+  })
+}
 
-export const update = (id, data) => instance.put(`clients/${id}`, data);
+export const create = (data, requestConfig = {}) => {
+  return instance.post(`${baseURL}clients`, data, {
+    ...requestConfig,
+  });
+}
 
-export const remove = (id) => instance.delete(`clients/${id}`);
+export const update = (id, data, requestConfig = {}) => {
+  return instance.put(`${baseURL}clients/${id}`, data, {
+    ...requestConfig,
+  });
+}
+
+export const remove = (id, requestConfig = {}) => {
+  return instance.delete(`${baseURL}clients/${id}`, {
+    ...requestConfig,
+  });
+}
