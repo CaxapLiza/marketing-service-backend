@@ -13,7 +13,7 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-	connectionString := "user=postgres password=qwerty dbname=marketing_service_db slide=disable"
+	connectionString := "user=postgres password=qwerty dbname=marketing_service_db sslmode=disable"
 	db, err := sql.Open("postgres", connectionString)
 	if err != nil {
 		log.Fatal(err)
