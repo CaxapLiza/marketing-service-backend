@@ -2,9 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {getList} from "./clients.api.js";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const getClientList = async ()  => {
+      await getList().then(res => console.log(res))
+  }
 
   return (
     <>
@@ -21,6 +25,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+          <button onClick={getClientList}>GET LIST</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
