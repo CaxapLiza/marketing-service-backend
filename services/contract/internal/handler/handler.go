@@ -99,7 +99,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		EndDate       time.Time `json:"end_date"`
 		Price         float32   `json:"price"`
 		Text          string    `json:"text"`
-		ClientID      int       `json:"contract_id"`
+		ClientID      int       `json:"client_id"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {
@@ -157,7 +157,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		EndDate       time.Time `json:"end_date"`
 		Price         float32   `json:"price"`
 		Text          string    `json:"text"`
-		ClientID      int       `json:"contract_id"`
+		ClientID      int       `json:"client_id"`
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {

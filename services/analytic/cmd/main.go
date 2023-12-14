@@ -19,7 +19,7 @@ func main() {
 
 	router.Use(corsMiddleware)
 
-	router.HandleFunc("/analytics/{id}", handler.GetList).Methods("GET", "OPTIONS")
+	router.HandleFunc("/analytics/list/{id}", handler.GetList).Methods("GET", "OPTIONS")
 	router.HandleFunc("/analytics/{id}", handler.Get).Methods("GET", "OPTIONS")
 	router.HandleFunc("/analytics", handler.Create).Methods("POST", "OPTIONS")
 	router.HandleFunc("/analytics/{id}", handler.Update).Methods("PUT", "OPTIONS")
