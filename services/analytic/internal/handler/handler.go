@@ -131,11 +131,11 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	repo := repository.NewRepository(db)
 
 	analytic := &internal.Analytic{
-		CTR:              float32(requestBody.NumberOfClicks / (requestBody.NumberOfImpressions * 100)),
-		ConversationRate: float32(requestBody.NumberOfConversions / (requestBody.NumberOfVisitors * 100)),
-		ROI:              (requestBody.Profit - requestBody.Costs) / (requestBody.Costs * 100),
+		CTR:              float32(requestBody.NumberOfClicks) / (float32(requestBody.NumberOfImpressions) * 100),
+		ConversationRate: float32(requestBody.NumberOfConversions) / float32(requestBody.NumberOfVisitors*100),
+		ROI:              float32((requestBody.Profit - requestBody.Costs) / (requestBody.Costs * 100)),
 		CAC:              float32(requestBody.MarketingCosts / requestBody.NumberOfNewCustomers),
-		LTV:              requestBody.AverageCustomerLifespan * requestBody.AverageAnnualRevenuePerCustomer,
+		LTV:              float32(requestBody.AverageCustomerLifespan * requestBody.AverageAnnualRevenuePerCustomer),
 		ProjectID:        requestBody.ProjectID,
 	}
 
